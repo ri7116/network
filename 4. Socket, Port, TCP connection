@@ -1,0 +1,48 @@
+'프로토콜 표준'에서 정의한 개념임!
+
+꼭 알고 넘어가야 할 개념
+1. 소켓
+2. 포트
+3. TCP connection
+
+
+      OSI 7 layer     vs     TCP/IP stack
+*  개념적인 모델             
+*  ISO/IEC에서 관리         IETF에서 인터넷 표준을 관리 RFC*(중요! TCP UDP IP.. 스펙은 RFC에서 정의 함!!)
+
+                            application layer 어플리케이션 레벨에서 구현/관리, 네트워크 기능 사용이 목적             어플리케이션 
+                            ---(Port)------------------------------------------------------------------------------------------
+                            transport layer  * 밑의 3개는 하드웨어/펌웨어, OS 레벨에서 구현 / 관리                   시스템
+                            internet later   * 네트워크 기능을 지원하는데 목적
+                            link layer
+
+
+Port: 프로세스와 연결된 data path 혹은 data channel
+      포트네임을 통해 식별
+
+인터넷 프로토콜은 기본적으로 unreliable(data loss, out of order) => 따라서 프로세스 간의 통신에서는 데이터를 '안정적'(reliable)로 주고 받을 수 있는 프로토콜이 필요함 => TCP
+
+Connection: 프로세스 간의 '안정적'이고 논리적인 통신 경로 
+            connection(3-way-handshake)을 열고, 데이터를 주고 받고, connection(4-way-handshake)을 닫는다.: connection-oriented
+            한 쌍의 소켓은 커넥션을 유니크하게 식별한다. 
+
+인터넷 상에서 어떻게 Port를 유니크하게 식별할까?
+* port(넘버): 0~65535 
+포트 넘버만으로는 유니크하게 식별할 수 없다.
+* internet address로 각 host를 유니크하게 식별할 수 있다.
+internet address + Port = 'Socket': 인터넷 상의 각 포트를 유니크하게 식별하기 위한 주소, 각 소켓은 인터넷 상에서 유니크하다.
+
+UDP= connectionless + unreliable
+
+주의 사항
+실제로 네트워크 프로그래밍을 할 때는 소켓의 개념과 의미가 미묘하게 다르다.
+특히 소켓을 식별하는 방법에서 큰 차이가 있다.
+
+
+
+
+
+
+
+
+
